@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Ubuntu', sans-serif;
+}
+.bg {
+  background-image: linear-gradient(
+    rgba(0, 0, 0, 0.9),
+    rgba(41, 0, 41, 0.7)
+  ),   url('./assets/img/bg.jpg');
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+}
+
+.container {
+  padding-top: 60px;
+}
+
+.container h1 {
+  text-align: center;
+  color: #97615E;
+  margin-bottom: 40px;
+}
+
+.cards {
+  overflow-x: scroll;
+  height: 580px;
+}
+
+.card {
+  padding: 15px;
+  color: #fff;
+  background-image: linear-gradient(
+    rgba(128, 0, 128, 0.9),
+    rgba(128, 0, 128, 0.8)
+  ),   url('./assets/img/disc.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border: 1.5px solid #660066;
+  overflow: hidden;
+  margin-bottom: 10px;
+  box-shadow: 7px 9px 18px -2px rgba(41,0,41,1);
+  transition: background 200ms ease-out;
+}
+
+.card:hover {
+  background: #8F008F;
+  cursor: pointer;
+}
+
+
+.card__image {
+  padding: 0;
+}
+
+.card img {
+  max-width: 100px;
+  border-radius: 100%;
+  border: 1px solid #660066;
+}
+
+.card__content p {
+  color: #D6D6D6;
+}
+
+.tracks {
+  position: relative;
+}
+
+.album__options {
+  /*margin-left: 12em;*/
+  position: absolute;
+  right: 15px;
+  top: -15px;
+}
+
+.album__options button {
+  padding: 10px 15px;
+  background: #64413F;
+  margin-bottom: 10px;
+  border: 1px solid #97615E;
+  color: #fff;
+  outline: none;
+  transition: background 200ms ease-in;
+}
+
+.album__options button:hover {
+  background: #97615E;
+}
+
+.tracks h4,h3,p,.album__options {
+  display: inline-block;
+}
+
+.tracks h4,p {
+  color: #D6D6D6;
+}
+
+.tracks h3 {
+  margin: 0;
+  color: #fff;
+}
+
+.tracks h4 {
+  margin: 0 15px 0 15px;
+}
+
+
+.tracks__item {
+  overflow-x: scroll;
+}
+
+.track {
+  background: #800080;
+  color: #E0E0E0;
+  display: flex;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-bottom: 2px solid #660066;
+  margin-bottom: 5px;
+  transition: background 200ms ease-in-out;
+}
+
+.track:hover {
+  color: #fff;
+  background: #8F008F;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.track__number {
+  margin-right: 20px;
+  min-width: 20px;
+}
+
+.track__title {
+  flex-grow: 2;
+}
+
+.overlay {
+  background: rgba(0,0,0,0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /*display: none;*/
+}
+
+.md {
+  background: #fff;
+  position: absolute;
+  top: 8em;
+  left: 15em;
+  border: 2px solid #C2C2C2;
+  /*transition: top 300ms ease-in;*/
+  /*display: none;*/
+}
+
+.tracks__form {
+  height: 400px;
+  overflow-x: scroll;
+}

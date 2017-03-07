@@ -1,0 +1,10 @@
+<div class="card" (click)="albumClick.emit(album.id)">
+  <div class="col-md-4 col-lg-4 col-sm-4 card__image">
+    <img src="http://placehold.it/500x500" alt="" class="img-responsive">
+  </div>
+  <div class="col-md-8 col-lg-8 col-sm-8 card__content">
+    <h4>{{album.title}}</h4>
+    <h6>{{album.artist}}</h6>
+    <p>{{album.category}} | {{album.year}}</p>
+  </div>
+</div>

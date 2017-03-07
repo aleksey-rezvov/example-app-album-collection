@@ -1,0 +1,5 @@
+<app-album-item
+  *ngFor="let album of albums"
+  [album]="album"
+  (albumClick)="updateTrackList($event)"
+></app-album-item>

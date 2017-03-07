@@ -1,0 +1,23 @@
+<div class="bg">
+  <div class="container">
+    <h1>Our Album Manager</h1>
+    <div class="col-md-4 cards">
+      <!-- Albums -->
+      <app-album-list></app-album-list>
+    </div>
+    <div class="col-md-8 tracks">
+      <h3>Short Album Title</h3>
+      <h4>Artist Name</h4>
+      <p>hip/hop | 2017</p>
+      <div class="album__options">
+        <button id="new" (click)="add()"><span class="glyphicon glyphicon-file"></span> New Album</button>
+        <button *ngIf="albumTracks" (click)="edit(albumTracks[0].albumId)"><span class="glyphicon glyphicon-edit"></span> Edit </button>
+        <button *ngIf="albumTracks" (click)="deleteAlbum(albumTracks[0].albumId)"><span class="glyphicon glyphicon-trash"></span> Delete </button>
+      </div>
+      <!-- Tracks -->
+      <app-track-list></app-track-list>
+    </div>
+  </div>
+</div>
+
+<app-modal [showModalInfo]="showModalInfo"></app-modal>

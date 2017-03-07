@@ -1,0 +1,99 @@
+<div class="overlay" *ngIf="showModalInfo.showModal" (click)="hideModal()"></div>
+
+<div class="md animate slideInDown" [@modal]="modal" *ngIf="showModalInfo.showModal">
+  <div class="container">
+    <form [formGroup]="modalForm" (ngSubmit)="save(modalForm.value)">
+    <div class="col-md-4">
+      <h3>Add Albums</h3>
+        <div class="form-group">
+          <label>#</label>
+          <input type="number" class="form-control" formControlName="id" placeholder="ID" [ngModel]="defaults?.id">
+          <small *ngIf="!modalForm.controls.id.valid && !modalForm.controls.id.pristine" class="text-danger">
+            Title is required.
+          </small>
+        </div>
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" class="form-control" formControlName="title" placeholder="Title" [ngModel]="defaults?.title">
+          <small *ngIf="!modalForm.controls.title.valid && !modalForm.controls.title.pristine" class="text-danger">
+            Title is required.
+          </small>
+        </div>
+        <div class="form-group">
+          <label>Artist</label>
+          <input type="text" class="form-control" formControlName="artist" placeholder="Artist" [ngModel]="defaults?.artist">
+          <small *ngIf="!modalForm.controls.artist.valid && !modalForm.controls.artist.pristine" class="text-danger">
+            Artist name is required.
+          </small>
+        </div>
+        <div class="form-group">
+          <label>Category</label>
+          <select formControlName="category" class="form-control" [ngModel]="defaults?.category">
+            <option value="Hip/Hop">Hip/Hop</option>
+            <option value="RnB">RnB</option>
+            <option value="Afro Hip/Hop">Afro Hip/Hop</option>
+          </select>
+          <small *ngIf="!modalForm.controls.category.valid && !modalForm.controls.category.pristine" class="text-danger">
+            Category is required.
+          </small>
+        </div>
+        <div class="form-group">
+          <label>Year</label>
+          <input type="text" class="form-control" formControlName="year" placeholder="Year" [ngModel]="defaults?.year">
+          <small *ngIf="!modalForm.controls.year.valid && !modalForm.controls.year.pristine" class="text-danger">
+            Year is required.
+          </small>
+        </div>
+    </div>
+    <div class="col-md-8" formArrayName="tracks" class="tracks__form">
+      <h3>Add Album Tracks</h3>
+        <div *ngFor="let track of modalForm.controls.tracks.controls; let i = index">
+          <div>
+            <span>Track {{i + 1}}</span>
+            <a *ngIf="modalForm.controls.tracks.controls.length > 1"
+                  (click)="removeTrack(i)" class="text-danger"> Remove
+            </a>
+          </div>
+          <div [formGroupName]="i">
+            <input type="hidden" formControlName="albumId" [ngModel]="modalForm.controls.id.value">
+            <div class="form-group">
+              <label>Number</label>
+              <input type="number" class="form-control" formControlName="number" placeholder="Number">
+              <small
+                *ngIf="!modalForm.controls.tracks.controls[i].controls.number.valid && !modalForm.controls.tracks.controls[i].controls.number.pristine"
+                class="text-danger"
+              >
+                Number is required
+              </small>
+            </div>
+            <div class="form-group">
+              <label>Title</label>
+              <input type="text" class="form-control" formControlName="title" placeholder="Title">
+              <small
+                *ngIf="!modalForm.controls.tracks.controls[i].controls.title.valid && !modalForm.controls.tracks.controls[i].controls.title.pristine"
+                class="text-danger">
+                Title is required
+              </small>
+            </div>
+            <div class="form-group">
+              <label>Duration</label>
+              <input type="text" class="form-control" formControlName="duration" placeholder="Duration">
+              <small
+                *ngIf="!modalForm.controls.tracks.controls[i].controls.duration.valid && !modalForm.controls.tracks.controls[i].controls.duration.pristine"
+                class="text-danger">
+                Duration
+              </small>
+            </div>
+          </div>
+        </div>
+      {{modalForm.value | json}}
+        <a (click)="addTrack()">
+          Add another address +
+        </a>
+        <div class="form-group">
+          <button type="submit" [disabled]="!modalForm.valid" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+    </form>
+  </div>
+</div>
